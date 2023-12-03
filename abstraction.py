@@ -154,14 +154,14 @@ CLOSE = STLComponent(
 # mold1_scope_list = []
 # for item in merger:
 #     mold1_scope_list.append(item.mold1_file_path)
-# merge_stls_y(finger_scope_list, "mold1")
+# merge_stls_y(mold1_scope_list, "mold1")
 #
 # mold2_scope_list = []
 # for item in merger:
 #     mold2_scope_list.append(item.mold2_file_path)
-# merge_stls_y(finger_scope_list, "mold2")
+# merge_stls_y(mold2_scope_list, "mold2")
 #
 # mold3_scope_list = []
 # for item in merger:
 #     mold3_scope_list.append(item.mold3_file_path)
-# merge_stls_y(finger_scope_list, "mold3")
+# merge_stls_y(mold3_scope_list, "mold3")
