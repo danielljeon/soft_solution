@@ -13,12 +13,11 @@ from mpl_toolkits.mplot3d import art3d
 from stl import mesh
 
 
-def merge_stls_y(scope: list[str], output_file_path: str | None = None) -> str:
+def merge_stls_y(scope: list[str]) -> mesh.Mesh:
     """Merge 2 STLs on the y-axis.
 
     Args:
         scope: List of STLs defined by their file paths.
-        output_file_path: Output file path, defaults to untitled_{datetime.now().isoformat()}.stl.
 
     Returns:
         Output / result file path.
@@ -26,11 +25,6 @@ def merge_stls_y(scope: list[str], output_file_path: str | None = None) -> str:
     # Ensure scope has at least 2 mesh.Mesh to merge.
     if not scope or len(scope) < 2:
         raise ValueError('"scope_meshes" must have at least 2 STL file paths to mesh')
-
-    if output_file_path is None:
-        output_file_path = f"untitled_{datetime.now().isoformat()}.stl"
-    if not output_file_path.lower().endswith(".stl"):
-        output_file_path += ".stl"
 
     combined_mesh = mesh.Mesh.from_file(scope[0])
 
@@ -47,10 +41,25 @@ def merge_stls_y(scope: list[str], output_file_path: str | None = None) -> str:
         # Combine the two meshes.
         combined_mesh = mesh.Mesh(np.concatenate([combined_mesh.data, new_mesh.data]))
 
-    # Save the merged mesh to a new STL file.
-    combined_mesh.save(output_file_path)
+    return combined_mesh
 
-    return output_file_path
+
+def save_mesh_to_stl(target_mesh: mesh.Mesh, output_file_path: str | None = None) -> str:
+    """Save mesh to .stl file format.
+
+    Args:
+        target_mesh: Input mesh object.
+        output_file_path: Output file path, defaults to untitled_{datetime.now().isoformat()}.stl.
+
+    Returns:
+        Output file path.
+    """
+    if output_file_path is None:
+        output_file_path = f"untitled_{datetime.now().isoformat()}.stl"
+    if not output_file_path.lower().endswith(".stl"):
+        output_file_path += ".stl"
+
+    target_mesh.save(output_file_path)
 
 
 def get_max_dimensions(file_path: str) -> list[int]:
