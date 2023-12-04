@@ -6,7 +6,7 @@ Code written by: Daniel Jeon (https://github.com/danielljeon)
 """
 
 # TODO (danielljeon): Very bad practice. Temporary code.
-from main import merge_stls_y
+from main import merge_stls_y, save_mesh_to_stl, display_stl
 
 
 class STLComponent:
@@ -74,6 +74,7 @@ class STLComponent:
         return self._name
 
 
+####################################################################################################
 # STANDARDIZED COMPONENTS.
 TUBING = STLComponent(
     "TUBING",
@@ -117,51 +118,71 @@ CLOSE = STLComponent(
     "stls/mold2_mold3_close.stl",
     "stls/mold2_mold3_close.stl",
 )
+####################################################################################################
 
+####################################################################################################
+# STANDARDIZED MERGES.
+start = [TUBING]  # y length = 25.0.
+mcp_joint = [BELLOW_START, BELLOW_MIDDLE, BELLOW_MIDDLE, BELLOW_END]  # y length = 28.0.
+pip_joint = [BELLOW_START, BELLOW_END]  # y length = 14.0.
+dip_joint = [BELLOW_START, BELLOW_END]  # y length = 14.0.
+end = [CLOSE]  # y length = 2.5.
+####################################################################################################
 
-# merger = [
-#     TUBING,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     BELLOW_START,
-#     BELLOW_MIDDLE,
-#     BELLOW_END,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     BELLOW_START,
-#     BELLOW_END,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     BELLOW_START,
-#     BELLOW_END,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     SPACER,
-#     CLOSE,
-# ]
-#
+####################################################################################################
+# DISTANCE IN mm.
+start_to_mcp = 6  # seg1
+mcp_to_pip = 4  # seg2
+pip_to_dip = 3  # seg3
+dip_to_end = 2  # seg4
+####################################################################################################
+
+####################################################################################################
+seg1 = int(start_to_mcp) - 25 - 28 / 2 if int(start_to_mcp) - 25 - 28 / 2 > 0 else 0
+seg2 = int(mcp_to_pip) - 28 / 2 - 14 / 2 if int(start_to_mcp) - 28 / 2 - 14 / 2 > 0 else 0
+seg3 = int(pip_to_dip) - 14 / 2 - 14 / 2 if int(start_to_mcp) - 14 / 2 - 14 / 2 > 0 else 0
+seg4 = int(dip_to_end) - 14 / 2 - 2.5 if int(start_to_mcp) - 14 / 2 - 2.5 > 0 else 0
+# seg = int(source_value) - start_y - end_y (/2 when the end target length >1), default 0.
+
+merger = (
+    start
+    + [SPACER for _ in range(seg1)]
+    + mcp_joint
+    + [SPACER for _ in range(seg2)]
+    + pip_joint
+    + [SPACER for _ in range(seg3)]
+    + dip_joint
+    + [SPACER for _ in range(seg4)]
+    + end
+)
+####################################################################################################
+
+####################################################################################################
 # finger_scope_list = []
 # for item in merger:
 #     finger_scope_list.append(item.finger_file_path)
-# merge_stls_y(finger_scope_list, "finger")
+# finger = merge_stls_y(finger_scope_list)
+# display_stl(finger, "finger")
+# # print(f"Saved to: {save_mesh_to_stl(finger)}")
 #
 # mold1_scope_list = []
 # for item in merger:
 #     mold1_scope_list.append(item.mold1_file_path)
-# merge_stls_y(mold1_scope_list, "mold1")
+# mold1 = merge_stls_y(mold1_scope_list)
+# display_stl(mold1, "mold1")
+# # print(f"Saved to: {save_mesh_to_stl(mold1)}")
 #
 # mold2_scope_list = []
 # for item in merger:
 #     mold2_scope_list.append(item.mold2_file_path)
-# merge_stls_y(mold2_scope_list, "mold2")
+# mold2 = merge_stls_y(mold2_scope_list)
+# display_stl(mold2, "mold2")
+# # print(f"Saved to: {save_mesh_to_stl(mold2)}")
 #
 # mold3_scope_list = []
 # for item in merger:
 #     mold3_scope_list.append(item.mold3_file_path)
-# merge_stls_y(mold3_scope_list, "mold3")
+# mold3 = merge_stls_y(mold3_scope_list)
+# display_stl(mold3, "mold3")
+# # print(f"Saved to: {save_mesh_to_stl(mold3)}")
+####################################################################################################
