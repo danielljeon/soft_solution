@@ -45,7 +45,7 @@ def merge_stls_y(scope: list[str]) -> mesh.Mesh:
 
 
 def save_mesh_to_stl(target_mesh: mesh.Mesh, output_file_path: str | None = None) -> str:
-    """Save mesh to .stl file format.
+    """Save mesh to STL file format.
 
     Args:
         target_mesh: Input mesh object.
@@ -92,15 +92,20 @@ def get_max_dimensions(target: mesh.Mesh | str) -> list[int]:
     ]
 
 
-def display_stl(file_path: str, name: str = "untitled"):
-    """Matplotlib display of STL files.
+def display_stl(target: mesh.Mesh | str, name: str = "untitled"):
+    """Matplotlib display of a mesh or STL file.
 
     Args:
-        file_path: File path of STL file.
+        target: File path or mesh.
         name: Name for window / plot naming.
     """
-    # Load STL file.
-    stl_mesh = mesh.Mesh.from_file(file_path)
+    if isinstance(target, str):
+        # Load STL file.
+        stl_mesh = mesh.Mesh.from_file(target)
+    elif isinstance(target, mesh.Mesh):
+        stl_mesh = target
+    else:
+        raise ValueError('"target" must be either a file path or mesh')
 
     # Create a new plot.
     figure = plt.figure()
