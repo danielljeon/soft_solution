@@ -61,6 +61,8 @@ def save_mesh_to_stl(target_mesh: mesh.Mesh, output_file_path: str | None = None
 
     target_mesh.save(output_file_path)
 
+    return output_file_path
+
 
 def get_max_dimensions(target: mesh.Mesh | str) -> list[int]:
     """Get maximum dimensions of an STL file.
