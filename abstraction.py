@@ -163,26 +163,26 @@ merger = (
 #     finger_scope_list.append(item.finger_file_path)
 # finger = merge_stls_y(finger_scope_list)
 # display_stl(finger, "finger")
-# # print(f"Saved to: {save_mesh_to_stl(finger)}")
+# # print(f"Saved to: {save_mesh_to_stl(finger, "finger")}")
 #
 # mold1_scope_list = []
 # for item in merger:
 #     mold1_scope_list.append(item.mold1_file_path)
 # mold1 = merge_stls_y(mold1_scope_list)
 # display_stl(mold1, "mold1")
-# # print(f"Saved to: {save_mesh_to_stl(mold1)}")
+# # print(f"Saved to: {save_mesh_to_stl(mold1, "mold1")}")
 #
 # mold2_scope_list = []
 # for item in merger:
 #     mold2_scope_list.append(item.mold2_file_path)
 # mold2 = merge_stls_y(mold2_scope_list)
 # display_stl(mold2, "mold2")
-# # print(f"Saved to: {save_mesh_to_stl(mold2)}")
+# # print(f"Saved to: {save_mesh_to_stl(mold2, "mold2")}")
 #
 # mold3_scope_list = []
 # for item in merger:
 #     mold3_scope_list.append(item.mold3_file_path)
 # mold3 = merge_stls_y(mold3_scope_list)
 # display_stl(mold3, "mold3")
-# # print(f"Saved to: {save_mesh_to_stl(mold3)}")
+# # print(f"Saved to: {save_mesh_to_stl(mold3, "mold3")}")
 ####################################################################################################
