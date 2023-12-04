@@ -138,10 +138,10 @@ dip_to_end = 2  # seg4
 ####################################################################################################
 
 ####################################################################################################
-seg1 = int(start_to_mcp) - 25 - 28 / 2 if int(start_to_mcp) - 25 - 28 / 2 > 0 else 0
-seg2 = int(mcp_to_pip) - 28 / 2 - 14 / 2 if int(start_to_mcp) - 28 / 2 - 14 / 2 > 0 else 0
-seg3 = int(pip_to_dip) - 14 / 2 - 14 / 2 if int(start_to_mcp) - 14 / 2 - 14 / 2 > 0 else 0
-seg4 = int(dip_to_end) - 14 / 2 - 2.5 if int(start_to_mcp) - 14 / 2 - 2.5 > 0 else 0
+seg1 = int(start_to_mcp - 25 - 28 / 2) if int(start_to_mcp) - 25 - 28 / 2 > 0 else 0
+seg2 = int(mcp_to_pip - 28 / 2 - 14 / 2) if int(start_to_mcp) - 28 / 2 - 14 / 2 > 0 else 0
+seg3 = int(pip_to_dip - 14 / 2 - 14 / 2) if int(start_to_mcp) - 14 / 2 - 14 / 2 > 0 else 0
+seg4 = int(dip_to_end - 14 / 2 - 2.5) if int(start_to_mcp) - 14 / 2 - 2.5 > 0 else 0
 # seg = int(source_value) - start_y - end_y (/2 when the end target length >1), default 0.
 
 merger = (
