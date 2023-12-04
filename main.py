@@ -62,17 +62,22 @@ def save_mesh_to_stl(target_mesh: mesh.Mesh, output_file_path: str | None = None
     target_mesh.save(output_file_path)
 
 
-def get_max_dimensions(file_path: str) -> list[int]:
+def get_max_dimensions(target: mesh.Mesh | str) -> list[int]:
     """Get maximum dimensions of an STL file.
 
     Args:
-        file_path: File path.
+        target: File path or mesh.
 
     Returns:
         [x, y, z] maximum lengths
     """
-    # Load STL file.
-    stl_mesh = mesh.Mesh.from_file(file_path)
+    if isinstance(target, str):
+        # Load STL file.
+        stl_mesh = mesh.Mesh.from_file(target)
+    elif isinstance(target, mesh.Mesh):
+        stl_mesh = target
+    else:
+        raise ValueError('"target" must be either a file path or mesh')
 
     # Extract all axis coordinates.
     x_coordinates = stl_mesh.x.flatten()
