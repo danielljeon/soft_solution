@@ -70,9 +70,9 @@ in `Dragon Skin 10 NV Silicone` using a PLA 3D-printed mold, created with the
 help of this script and manually controlled using plastic pneumatic tubing and a
 syringe.
 
-|                            Mold Top View                             |                        Mold Angled View                        |
-|:--------------------------------------------------------------------:|:--------------------------------------------------------------:|
-| ![v17-v18 molds angled.jpeg](pictures/v17-v18%20molds%20angled.jpeg) | ![v17-v18 molds top.jpeg](pictures/v17-v18%20molds%20top.jpeg) |
+|                         Mold Top View                          |                           Mold Angled View                           |
+|:--------------------------------------------------------------:|:--------------------------------------------------------------------:|
+| ![v17-v18 molds top.jpeg](pictures/v17-v18%20molds%20top.jpeg) | ![v17-v18 molds angled.jpeg](pictures/v17-v18%20molds%20angled.jpeg) |
 
 |                                    Stage 1 Mold Cavities                                     |                                    Stage 2 Mold Base Seal                                    |
 |:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|
